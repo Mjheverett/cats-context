@@ -4,17 +4,23 @@ import Demo from './components/DemoComponent';
 
 function App() {
   const initialState = {
-    name: "Matthew",
+    name: "Guster",
+    activity: "napping",
   };
 
   const reducer = (state, action) => {
-    const { name } = action;
+    const { name, activity } = action;
     switch (action.type) {
       case "CHANGE_NAME":
         return {
           ...state,
-          name
+          name,
         };
+      case "SET_ACTIVITY":
+        return {
+          ...state,
+          activity,
+        }
       default:
         return state;
     }
@@ -23,7 +29,7 @@ function App() {
   return (
     <div className="App">
       <StateProvider value={useReducer(reducer, initialState)}>
-        <h1>Working with Context</h1>
+        <h1>Context Cats</h1>
         <Demo />
       </StateProvider>
     </div>
